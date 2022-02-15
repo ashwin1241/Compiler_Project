@@ -10,6 +10,18 @@ typedef long long int ll;
 using namespace std;
 int main()
 {
-    
+    ll i;
+    cout<<"Enter the input code:\n";
+    vector<string> asp;
+    string s="";
+    while(s[s.size()-1]!=';')
+    {
+        cin>>s;
+        asp.push_back(s);
+    }
+    for(i=0;i<asp.size();i++)
+    {
+        cout<<asp[i]<<" ";
+    }
     return 0;
 }
