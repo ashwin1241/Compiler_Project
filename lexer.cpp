@@ -90,7 +90,7 @@ void check_special_symbol(string s)
 void tokenize(vector<vector<string>> ipcode)
 {
     ll i,j;
-    for(i=0;i<ipcode.size();i++)
+    for(i=1;i<ipcode.size();i++)
     {
         vector<string> container = ipcode[i];
         for(j=0;j<container.size();j++)
