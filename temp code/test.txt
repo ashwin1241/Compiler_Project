@@ -1,4 +1,5 @@
-int main()
-{
-    int 1a; //comment
-}
+int x += 5;
+y = z + 5;
+++ -- + - *;
+2.55
+i++;
