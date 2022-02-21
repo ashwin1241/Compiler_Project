@@ -72,30 +72,15 @@ bool isFloat(string word){
 bool isIdentifier(string word)
 {
     char x = word[0];
-    if((x>='0'&&x<='9')||(x>='a'&&x<='z')||(x>='A'&&x<='Z'))
+    if((x>='a'&&x<='z')||(x>='A'&&x<='Z'))
     {
         int i;
-        bool f=true;
         for(i=1;i<word.size();i++)
         {
             x=word[i];
             bool t = (x>='0'&&x<='9')||(x>='a'&&x<='z')||(x>='A'&&x<='Z')||(x=='_');
             if(!t)
-            {
-                f=false;
-                break;
-            }
-        }
-        if(f==false)
-        {
-            if(word[i]=='['&&word[word.size()-1]==']')
-            {
-                string s = word.substr(i+1,word.size()-1-i);
-                if(isInteger(s))
-                return true;
-                else
                 return false;
-            }
         }
         return true;
     }
@@ -145,7 +130,7 @@ string preProcess(string line){
         }
 
     string newLine="";
-    vector<char> spchar = {'!','@','#','$','%','^','&','*','(',')','-','+','+','{','[','}',']',':',';','/',',','<','>'};
+    vector<char> spchar = {'!','%','^','&','*','(',')','-','+','+','{','[','}',']',':',';','/',',','<','>'};
     vector<string> binop = {"<=",">=","==","+=","-=","*=","/=","!=","&&","||",":=","++","--"};
     for(int i=0;i<line.size();i++) 
     {
