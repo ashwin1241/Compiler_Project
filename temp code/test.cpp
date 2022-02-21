@@ -153,13 +153,13 @@ string preProcess(string line){
         if(i>line.size()-1)
         cout<<bop<<" ";
         if(i>line.size()-1&&find(binop.begin(),binop.end(),bop)!=binop.end()){
-            newLine=newLine+" "+line[i]+line[i+1];
+            newLine=newLine+" "+line[i]+line[i+1]+" ";
             i++;
         }
         else if(find(spchar.begin(),spchar.end(),line[i])!=spchar.end())
-        newLine=newLine+" "+line[i];
+        newLine=newLine+" "+line[i]+" ";
         else 
-        newLine=newLine+" "+line[i];
+        newLine=newLine+line[i];
     }
     cout<<newLine<<"\n";
     return newLine;
