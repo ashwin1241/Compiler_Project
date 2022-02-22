@@ -14,7 +14,7 @@ map<string,int> token_id;
 ll ctr=100;
 
 bool isKeyword(string word){
-    vector<string> keywords = {"int","main", "float", "boolean", "string", "while", "until", "if" ,"else", "true", "false", "continue", "break"};
+    vector<string> keywords = {"return","void","int","main", "float", "boolean", "string", "while", "until", "if" ,"else", "true", "false", "continue", "break"};
     if(find(keywords.begin(), keywords.end(), word) != keywords.end())
     {
         if(token_id.find(word)==token_id.end())
@@ -116,7 +116,7 @@ bool isFloat(string word){
 
 bool isIdentifier(string word){
     char x = word[0];
-    if((x>='a'&&x<='z')||(x>='A'&&x<='Z'))
+    if(!isKeyword(word)&&(x>='a'&&x<='z')||(x>='A'&&x<='Z'))
     {
         int i;
         for(i=1;i<word.size();i++)
@@ -137,13 +137,20 @@ bool isIdentifier(string word){
     return false;
 }
 
-void tokenize(vector<string>inputCode){
+void tokenize(vector<string> inputCode){
+    bool isComment=false;
+    ofstream output_file("output.txt");
+    if(!output_file.is_open())
+    {
+        cerr << "Could not open the file - 'output.txt'\n";
+        return;
+    }
     for(int i=0;i<inputCode.size();i++){
 
-        if(inputCode[i][0]=='/' && inputCode[i][1]=='/'){
-           cout<<"Token isComment"<<", line number "<<i+1<<endl;
-           continue; 
-        }
+        // if(inputCode[i][0]=='/' && inputCode[i][1]=='/'){
+        //    cout<<"Token isComment"<<", line number "<<i+1<<endl;
+        //    continue; 
+        // }
 
         istringstream ss(inputCode[i]);
         string word;
@@ -151,24 +158,36 @@ void tokenize(vector<string>inputCode){
         {
             //cout << word << "\n";
             //word=preProcess(word);
+            if(word.size()>1&&word[0]=='/'&&word[1]=='/')
+            {
+                isComment=true;
+                break;
+            }
             if(isKeyword(word))
-            cout<<"Token is a Keyword, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Token is a Keyword, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isOperator(word))
-            cout<<"Token is an Operator, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Token is an Operator, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isDelimiter(word))
-            cout<<"Token is a Delimiter, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Token is a Delimiter, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isString(word))
-            cout<<"Token is a String literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Token is a String literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isInteger(word))
-            cout<<"Token is an Integer literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Token is an Integer literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isFloat(word))
-            cout<<"Token is a Floating point literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Token is a Floating point literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isIdentifier(word))
-            cout<<"Token is an Identifier, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Token is an Identifier, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else
-            cout<<"Invalid token, string: "<<word<<" at line number: "<<i+1<<"\n";
+            output_file<<"Invalid token, string: "<<word<<" at line number: "<<i+1<<"\n";
+        }
+        if(isComment)
+        {
+            isComment=false;
+            continue;
         }
     }
+    cout<<"Output file successfully generated\n";
+    output_file.close();
 }
 
 string preProcess(string line){
@@ -180,7 +199,7 @@ string preProcess(string line){
 
     string newLine="";
     vector<char> spchar = {'!','%','^','&','*','(',')','-','+','+','{','[','}',']',':',';','/',',','<','>','='};
-    vector<string> binop = {"<=",">=","==","+=","-=","*=","/=","!=","&&","||",":=","++","--"};
+    vector<string> binop = {"<=",">=","==","+=","-=","*=","/=","!=","&&","||",":=","++","--","//"};
     for(int i=0;i<line.size();i++) 
     {
         string bop="";
@@ -202,9 +221,71 @@ string preProcess(string line){
     return newLine;
 }
 
+void generate_symbol_table(vector<string> inputcode)
+{
+    ofstream symbolTable("symbol table.txt");
+    if(!symbolTable.is_open())
+    {
+        cerr<<"Coud not generate symbol table\n";
+        return;
+    }
+    int i;
+    symbolTable<<"Keywords:\n";
+    for(auto x : token_id)
+    {
+        if(isKeyword(x.first))
+        symbolTable<<x.first<<" "<<x.second<<"\n";
+    }
+    symbolTable<<"\n";
+    symbolTable<<"Identifiers:\n";
+    for(auto x : token_id)
+    {
+        if(isIdentifier(x.first))
+        symbolTable<<x.first<<" "<<x.second<<"\n";
+    }
+    symbolTable<<"\n";
+    symbolTable<<"Operators:\n";
+    for(auto x : token_id)
+    {
+        if(isOperator(x.first))
+        symbolTable<<x.first<<" "<<x.second<<"\n";
+    }
+    symbolTable<<"\n";
+    symbolTable<<"Integer literals:\n";
+    for(auto x : token_id)
+    {
+        if(isInteger(x.first))
+        symbolTable<<x.first<<" "<<x.second<<"\n";
+    }
+    symbolTable<<"\n";
+    symbolTable<<"Float literals:\n";
+    for(auto x : token_id)
+    {
+        if(isFloat(x.first))
+        symbolTable<<x.first<<" "<<x.second<<"\n";
+    }
+    symbolTable<<"\n";
+    symbolTable<<"Delimiters:\n";
+    for(auto x : token_id)
+    {
+        if(isDelimiter(x.first))
+        symbolTable<<x.first<<" "<<x.second<<"\n";
+    }
+    symbolTable<<"\n";
+    symbolTable<<"String literals:\n";
+    for(auto x : token_id)
+    {
+        if(isString(x.first))
+        symbolTable<<x.first<<" "<<x.second<<"\n";
+    }
+    symbolTable<<"\n";
+    cout<<"Symbol table created successfully\n";
+    symbolTable.close();
+}
+
 int main(){
     //Name of input code file	
-    string filename("test.txt");
+    string filename("input.txt");
     vector<string> inputCode;
     string line;
 
@@ -225,6 +306,9 @@ int main(){
 
     //Tokenize
     tokenize(inputCode);
+
+    //Generate symbol table
+    generate_symbol_table(inputCode);
 
 	//Closing the input code file
     input_file.close();
