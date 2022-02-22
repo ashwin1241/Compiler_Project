@@ -234,49 +234,49 @@ void generate_symbol_table(vector<string> inputcode)
     for(auto x : token_id)
     {
         if(isKeyword(x.first))
-        symbolTable<<x.first<<" "<<x.second<<"\n";
+        symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Identifiers:\n";
     for(auto x : token_id)
     {
         if(isIdentifier(x.first))
-        symbolTable<<x.first<<" "<<x.second<<"\n";
+        symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Operators:\n";
     for(auto x : token_id)
     {
         if(isOperator(x.first))
-        symbolTable<<x.first<<" "<<x.second<<"\n";
+        symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Integer literals:\n";
     for(auto x : token_id)
     {
         if(isInteger(x.first))
-        symbolTable<<x.first<<" "<<x.second<<"\n";
+        symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Float literals:\n";
     for(auto x : token_id)
     {
         if(isFloat(x.first))
-        symbolTable<<x.first<<" "<<x.second<<"\n";
+        symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Delimiters:\n";
     for(auto x : token_id)
     {
         if(isDelimiter(x.first))
-        symbolTable<<x.first<<" "<<x.second<<"\n";
+        symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"String literals:\n";
     for(auto x : token_id)
     {
         if(isString(x.first))
-        symbolTable<<x.first<<" "<<x.second<<"\n";
+        symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     cout<<"Symbol table created successfully\n";
