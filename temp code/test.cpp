@@ -3,15 +3,27 @@
 #include <vector>
 #include <bits/stdc++.h>
 
+typedef long long int ll;
+
 using namespace std;
 //using std::cout; using std::cerr;
 //using std::endl; using std::string;
 //using std::ifstream; using std::vector;
 
+map<string,int> token_id;
+ll ctr=100;
+
 bool isKeyword(string word){
     vector<string> keywords = {"int","main", "float", "boolean", "string", "while", "until", "if" ,"else", "true", "false", "continue", "break"};
     if(find(keywords.begin(), keywords.end(), word) != keywords.end())
-    return true;
+    {
+        if(token_id.find(word)==token_id.end())
+        {
+            token_id[word]=ctr;
+            ctr++;
+        }
+        return true;
+    }
     else
     return false;
 }
@@ -19,7 +31,14 @@ bool isKeyword(string word){
 bool isOperator(string word){
     vector<string> oprator = {"<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="};
     if(find(oprator.begin(), oprator.end(), word) != oprator.end())
-    return true;
+    {
+        if(token_id.find(word)==token_id.end())
+        {
+            token_id[word]=ctr;
+            ctr++;
+        }
+        return true;
+    }
     else
     return false;
 }
@@ -27,14 +46,28 @@ bool isOperator(string word){
 bool isDelimiter(string word){
     vector<string> delimiter = {"{", "}", "(", ")", "[", "]", ";", ","};
     if(find(delimiter.begin(), delimiter.end(), word) != delimiter.end())
-    return true;
+    {
+        if(token_id.find(word)==token_id.end())
+        {
+            token_id[word]=ctr;
+            ctr++;
+        }
+        return true;
+    }
     else
     return false;
 }
 
 bool isString(string word){
     if(word[0] == '"' && word[word.size()-1] == '"')
-    return true;
+    {
+        if(token_id.find(word)==token_id.end())
+        {
+            token_id[word]=ctr;
+            ctr++;
+        }
+        return true;
+    }
     else
     return false;
 }
@@ -44,6 +77,11 @@ bool isInteger(string word){
         if(word[i]>='0'&&word[i]<='9')
         continue;
         return false;
+    }
+    if(token_id.find(word)==token_id.end())
+    {
+        token_id[word]=ctr;
+        ctr++;
     }
     return true;
 }
@@ -64,13 +102,19 @@ bool isFloat(string word){
     string afterDecimal = word.substr(t + 1);
 
     if(isInteger(beforeDecimal) && isInteger(afterDecimal))
-    return true;
+    {
+        if(token_id.find(word)==token_id.end())
+        {
+            token_id[word]=ctr;
+            ctr++;
+        }
+        return true;
+    }
     else
     return false;
 }
 
-bool isIdentifier(string word)
-{
+bool isIdentifier(string word){
     char x = word[0];
     if((x>='a'&&x<='z')||(x>='A'&&x<='Z'))
     {
@@ -81,6 +125,11 @@ bool isIdentifier(string word)
             bool t = (x>='0'&&x<='9')||(x>='a'&&x<='z')||(x>='A'&&x<='Z')||(x=='_');
             if(!t)
                 return false;
+        }
+        if(token_id.find(word)==token_id.end())
+        {
+            token_id[word]=ctr;
+            ctr++;
         }
         return true;
     }
@@ -103,19 +152,19 @@ void tokenize(vector<string>inputCode){
             //cout << word << "\n";
             //word=preProcess(word);
             if(isKeyword(word))
-            cout<<"Token is a Keyword, string: "<<word<<" , line number: "<<i+1<<"\n";
+            cout<<"Token is a Keyword, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isOperator(word))
-            cout<<"Token is an Operator, string: "<<word<<" , line number: "<<i+1<<"\n";
+            cout<<"Token is an Operator, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isDelimiter(word))
-            cout<<"Token is a Delimiter, string: "<<word<<" , line number: "<<i+1<<"\n";
+            cout<<"Token is a Delimiter, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isString(word))
-            cout<<"Token is a String literal, string: "<<word<<" , line number: "<<i+1<<"\n";
+            cout<<"Token is a String literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isInteger(word))
-            cout<<"Token is an Integer literal, string: "<<word<<" , line number: "<<i+1<<"\n";
+            cout<<"Token is an Integer literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isFloat(word))
-            cout<<"Token is a Floating point literal, string: "<<word<<" , line number: "<<i+1<<"\n";
+            cout<<"Token is a Floating point literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isIdentifier(word))
-            cout<<"Token is an Identifier, string: "<<word<<" , line number: "<<i+1<<"\n";
+            cout<<"Token is an Identifier, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else
             cout<<"Invalid token, string: "<<word<<" at line number: "<<i+1<<"\n";
         }
@@ -130,14 +179,17 @@ string preProcess(string line){
         }
 
     string newLine="";
-    vector<char> spchar = {'!','%','^','&','*','(',')','-','+','+','{','[','}',']',':',';','/',',','<','>'};
+    vector<char> spchar = {'!','%','^','&','*','(',')','-','+','+','{','[','}',']',':',';','/',',','<','>','='};
     vector<string> binop = {"<=",">=","==","+=","-=","*=","/=","!=","&&","||",":=","++","--"};
     for(int i=0;i<line.size();i++) 
     {
-        string bop = ""+line[i]+line[i+1];
-        if(i>line.size()-1)
-        cout<<bop<<" ";
-        if(i>line.size()-1&&find(binop.begin(),binop.end(),bop)!=binop.end()){
+        string bop="";
+        if(i<line.size()-1){
+            bop.push_back(line[i]);
+            bop.push_back(line[i+1]);
+        }
+        
+        if(find(binop.begin(),binop.end(),bop)!=binop.end()){
             newLine=newLine+" "+line[i]+line[i+1]+" ";
             i++;
         }
@@ -146,7 +198,7 @@ string preProcess(string line){
         else 
         newLine=newLine+line[i];
     }
-    cout<<newLine<<"\n";
+    //cout<<newLine<<"\n";
     return newLine;
 }
 
