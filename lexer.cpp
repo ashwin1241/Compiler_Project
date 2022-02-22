@@ -11,10 +11,14 @@ using namespace std;
 //using std::ifstream; using std::vector;
 
 map<string,int> token_id;
-ll ctr=100;
+ll ctr=1000;
+vector<char> spchar = {'!','%','^','&','*','(',')','-','+','+','{','[','}',']',':',';','/',',','<','>','='};
+vector<string> binop = {"<<",">>","<=",">=","==","+=","-=","*=","/=","!=","&&","||",":=","++","--","//"};
+vector<string> delimiter = {"{", "}", "(", ")", "[", "]", ";", ","};
+vector<string> oprator = {"<<",">>","<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="};
+vector<string> keywords = {"cout","cin","return","void","int","main", "float", "boolean", "string", "while", "until", "if" ,"else", "true", "false", "continue", "break"};
 
 bool isKeyword(string word){
-    vector<string> keywords = {"return","void","int","main", "float", "boolean", "string", "while", "until", "if" ,"else", "true", "false", "continue", "break"};
     if(find(keywords.begin(), keywords.end(), word) != keywords.end())
     {
         if(token_id.find(word)==token_id.end())
@@ -29,7 +33,6 @@ bool isKeyword(string word){
 }
 
 bool isOperator(string word){
-    vector<string> oprator = {"<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="};
     if(find(oprator.begin(), oprator.end(), word) != oprator.end())
     {
         if(token_id.find(word)==token_id.end())
@@ -44,7 +47,6 @@ bool isOperator(string word){
 }
 
 bool isDelimiter(string word){
-    vector<string> delimiter = {"{", "}", "(", ")", "[", "]", ";", ","};
     if(find(delimiter.begin(), delimiter.end(), word) != delimiter.end())
     {
         if(token_id.find(word)==token_id.end())
@@ -198,8 +200,6 @@ string preProcess(string line){
         }
 
     string newLine="";
-    vector<char> spchar = {'!','%','^','&','*','(',')','-','+','+','{','[','}',']',':',';','/',',','<','>','='};
-    vector<string> binop = {"<=",">=","==","+=","-=","*=","/=","!=","&&","||",":=","++","--","//"};
     for(int i=0;i<line.size();i++) 
     {
         string bop="";
@@ -283,7 +283,56 @@ void generate_symbol_table(vector<string> inputcode)
     symbolTable.close();
 }
 
+void initialize_token_map()
+{
+    int counter = 50,i;
+    for(i=0;i<keywords.size();i++)
+    {
+        if(token_id.find(keywords[i])==token_id.end())
+        {
+            token_id[keywords[i]]=counter;
+            counter++;
+        }
+    }
+    for(i=0;i<spchar.size();i++)
+    {
+        if(token_id.find(spchar[i]+"")==token_id.end())
+        {
+            token_id[spchar[i]+""]=counter;
+            counter++;
+        }
+    }
+    for(i=0;i<binop.size();i++)
+    {
+        if(token_id.find(binop[i])==token_id.end())
+        {
+            token_id[binop[i]]=counter;
+            counter++;
+        }
+    }
+    for(i=0;i<delimiter.size();i++)
+    {
+        if(token_id.find(delimiter[i])==token_id.end())
+        {
+            token_id[delimiter[i]]=counter;
+            counter++;
+        }
+    }
+    for(i=0;i<oprator.size();i++)
+    {
+        if(token_id.find(oprator[i])==token_id.end())
+        {
+            token_id[oprator[i]]=counter;
+            counter++;
+        }
+    }
+}
+
 int main(){
+
+    //initialize token map
+    initialize_token_map();
+
     //Name of input code file	
     string filename("input.txt");
     vector<string> inputCode;

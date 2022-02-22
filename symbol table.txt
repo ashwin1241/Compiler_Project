@@ -1,38 +1,58 @@
 Keywords:
-else : 111
-if : 106
-int : 100
-main : 116
-return : 109
-void : 115
-while : 119
+boolean : 57
+break : 66
+cin : 51
+continue : 65
+cout : 50
+else : 62
+false : 64
+float : 56
+if : 61
+int : 54
+main : 55
+return : 52
+string : 58
+true : 63
+until : 60
+void : 53
+while : 59
 
 Identifiers:
-fact : 101
-n : 103
-write : 121
-writeln : 122
-x : 117
 
 Operators:
-* : 112
-+ : 123
+* : 111
+*= : 92
++ : 112
+++ : 98
++= : 90
 - : 113
-<= : 107
-= : 118
+-- : 99
+-= : 91
+/ : 114
+/= : 93
+< : 109
+<< : 85
+<= : 87
+= : 115
+== : 89
+> : 110
+>= : 88
+>> : 86
 
 Integer literals:
-1 : 108
-10 : 120
+ : 84
 
 Float literals:
 
 Delimiters:
-( : 102
+( : 103
 ) : 104
-; : 110
-{ : 105
-} : 114
+, : 108
+; : 107
+[ : 105
+] : 106
+{ : 101
+} : 102
 
 String literals:
 
