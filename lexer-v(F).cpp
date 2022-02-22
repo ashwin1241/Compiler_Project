@@ -164,19 +164,19 @@ void tokenize(vector<string> inputCode){
                 break;
             }
             if(isKeyword(word))
-            output_file<<"Token is a Keyword, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Keyword token, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isOperator(word))
-            output_file<<"Token is an Operator, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Operator token, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isDelimiter(word))
-            output_file<<"Token is a Delimiter, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Delimiter token, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isString(word))
-            output_file<<"Token is a String literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"String literal token, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isInteger(word))
-            output_file<<"Token is an Integer literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Integer literal token, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isFloat(word))
-            output_file<<"Token is a Floating point literal, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Floating point literal token, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isIdentifier(word))
-            output_file<<"Token is an Identifier, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
+            output_file<<"Identifier token, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else
             output_file<<"Invalid token, string: "<<word<<" at line number: "<<i+1<<"\n";
         }
