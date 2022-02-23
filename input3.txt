@@ -1,6 +1,7 @@
 int main()
 {
-    cout<<"Hello World!!";
+    // test comment "invalid string"
+    cout<<"Hello World!!"; // comment sjdhsadjsdbbcs,b "commented string"
     cout<<"Line 2 of string !@#$%^&*()";
     cout<<"  Line 3    "<<"continuation of string"<<" "<<"part 3 of continuation";
     return 0;

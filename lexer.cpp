@@ -391,11 +391,17 @@ int main(){
         }
         int j=0;
         bool isStr=false;
+        bool isComment=false;
         while(j<inputCode[i].size())
         {
             string s="";
             for(;j<inputCode[i].size();j++)
             {
+                if(!isStr&&inputCode[i][j]=='/'&&inputCode[i][j+1]=='/'&&j<inputCode[i].size()-1)
+                {
+                    isComment=true;
+                    break;
+                }
                 if(inputCode[i][j]!='"')
                 s+=inputCode[i][j];
                 else
@@ -415,10 +421,20 @@ int main(){
             }
             if(!isStr)
             {
-                isStr=true;
-                tokenize(s,i,cc);
-                continue;
+                if(!isComment)
+                {
+                    isStr=true;
+                    tokenize(s,i,cc);
+                    continue;
+                }
+                else
+                    break;
             }
+        }
+        if(isComment)
+        {
+            isComment=false;
+            continue;
         }        
     }
 
