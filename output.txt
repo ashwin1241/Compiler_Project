@@ -1,11 +1,11 @@
 Keyword token, string: float , line number: 1, token id: 56
 Identifier token, string: x , line number: 1, token id: 1000
 Operator token, string: = , line number: 1, token id: 116
-Floating point literal token, string: 0.5 , line number: 1, token id: 0
+Floating point literal token, string: 0.5 , line number: 1, token id: 1003
 Delimiter token, string: , , line number: 1, token id: 109
 Identifier token, string: m , line number: 1, token id: 1004
 Operator token, string: = , line number: 1, token id: 116
-Floating point literal token, string: 0.40005 , line number: 1, token id: 0
+Floating point literal token, string: 0.40005 , line number: 1, token id: 1006
 Delimiter token, string: ; , line number: 1, token id: 108
 Keyword token, string: int , line number: 2, token id: 54
 Identifier token, string: z , line number: 2, token id: 1007

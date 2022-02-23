@@ -114,8 +114,8 @@ bool isFloat(string word){
     reverse(word.begin(), word.end());
     word= regex_replace(word, regex("^0+"), "");
     reverse(word.begin(), word.end());
-    if(beforeDecimal.size()==0)
-    beforeDecimal+="0";
+    if(word[0]=='.')
+    word="0"+word;
 
     if(isInteger(beforeDecimal) && isInteger(afterDecimal))
     {
@@ -230,7 +230,7 @@ void tokenize(string inputCode,int i,ofstream& output_file){
             output_file<<"Invalid token, string: "<<word<<" at line number: "<<i+1<<"\n";
 
         }
-    
+    cout<<inputCode<<"\n";
 
 }
 
@@ -460,6 +460,8 @@ int main(){
         }
         
     }
+
+    cout<<"Output file generated successfully\n";
 
     //Generate symbol table
     generate_symbol_table(inputCode);
