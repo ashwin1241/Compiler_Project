@@ -190,7 +190,7 @@ void tokenize(string inputCode,int i,ofstream& output_file){
         if(isString(inputCode))
         output_file<<"String literal token, string: "<<inputCode<<" , line number: "<<i+1<<", token id: "<<token_id[inputCode]<<"\n";
         else
-        output_file<<"Invalid token, string: "<<inputCode<<" at line number: "<<i+1<<"\n";
+        output_file<<"Invalid token, string: "<<inputCode<<" , at line number: "<<i+1<<"\n";
         //cout<<inputCode<<"\n";
         return;
     }
@@ -201,7 +201,13 @@ void tokenize(string inputCode,int i,ofstream& output_file){
         {
             //cout << word << "\n";
             //word=preProcess(word);
-            
+
+            if(word=="//")
+            {
+                isComment=true;
+                break;
+            }
+
             if(isKeyword(word))
             output_file<<"Keyword token, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else if(isOperator(word))
@@ -231,16 +237,22 @@ void tokenize(string inputCode,int i,ofstream& output_file){
             output_file<<"Invalid token, string: "<<word<<" at line number: "<<i+1<<"\n";
 
         }
+
+        if(isComment)
+        {
+            isComment=false;
+            return;
+        }
     //cout<<inputCode<<"\n";
 
 }
 
 string preProcess(string line){
 
-    if(line[0]=='/' && line[1]=='/'){
-           //cout<<"Token isComment"<<", line number "<<i+1<<endl;
-           return line; 
-        }
+    // if(line[0]=='/' && line[1]=='/'){
+    //        //cout<<"Token isComment"<<", line number "<<i+1<<endl;
+    //        return line; 
+    //     }
 
     string newLine="";
     for(int i=0;i<line.size();i++) 

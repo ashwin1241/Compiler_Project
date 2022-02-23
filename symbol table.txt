@@ -18,12 +18,11 @@ void : 53
 while : 59
 
 Identifiers:
-m : 1004
-q : 1010
-s : 1012
-t : 1009
-x : 1000
-z : 1007
+fact : 1000
+n : 1001
+write : 1006
+writeln : 1007
+x : 1003
 
 Operators:
 * : 112
@@ -47,15 +46,11 @@ Operators:
 
 Integer literals:
  : 68
-0 : 1001
-4 : 1008
-400050 : 1005
-5 : 1002
-500 : 1011
+0 : 1008
+1 : 1002
+10 : 1005
 
 Float literals:
-0.40005 : 1006
-0.5 : 1003
 
 Delimiters:
 ( : 104
@@ -68,6 +63,5 @@ Delimiters:
 } : 103
 
 String literals:
-"Hello ney york 55%%  " : 1013
-"This is the second @string    " : 1014
+"The value of x is : " : 1004
 

@@ -1,33 +1,79 @@
-Keyword token, string: float , line number: 1, token id: 56
-Identifier token, string: x , line number: 1, token id: 1000
-Operator token, string: = , line number: 1, token id: 116
-Floating point literal token, string: 0.5 , line number: 1, token id: 1003
-Delimiter token, string: , , line number: 1, token id: 109
-Identifier token, string: m , line number: 1, token id: 1004
-Operator token, string: = , line number: 1, token id: 116
-Floating point literal token, string: 0.40005 , line number: 1, token id: 1006
-Delimiter token, string: ; , line number: 1, token id: 108
-Keyword token, string: int , line number: 2, token id: 54
-Identifier token, string: z , line number: 2, token id: 1007
-Operator token, string: = , line number: 2, token id: 116
-Integer literal token, string: 4 , line number: 2, token id: 1008
-Delimiter token, string: , , line number: 2, token id: 109
-Identifier token, string: t , line number: 2, token id: 1009
-Operator token, string: = , line number: 2, token id: 116
-Integer literal token, string: 0 , line number: 2, token id: 1001
-Delimiter token, string: , , line number: 2, token id: 109
-Identifier token, string: q , line number: 2, token id: 1010
-Operator token, string: = , line number: 2, token id: 116
-Integer literal token, string: 500 , line number: 2, token id: 1011
-Delimiter token, string: ; , line number: 2, token id: 108
-Keyword token, string: string , line number: 3, token id: 58
-Identifier token, string: s , line number: 3, token id: 1012
-Operator token, string: = , line number: 3, token id: 116
-String literal token, string: "Hello ney york 55%%  " , line number: 3, token id: 1013
-Delimiter token, string: ; , line number: 3, token id: 108
-Keyword token, string: cout , line number: 4, token id: 50
-Operator token, string: << , line number: 4, token id: 86
-String literal token, string: "This is the second @string    " , line number: 4, token id: 1014
-Operator token, string: << , line number: 4, token id: 86
-Identifier token, string: z , line number: 4, token id: 1007
-Delimiter token, string: ; , line number: 4, token id: 108
+Keyword token, string: int , line number: 3, token id: 54
+Identifier token, string: fact , line number: 3, token id: 1000
+Delimiter token, string: ( , line number: 3, token id: 104
+Keyword token, string: int , line number: 3, token id: 54
+Identifier token, string: n , line number: 3, token id: 1001
+Delimiter token, string: ) , line number: 3, token id: 105
+Delimiter token, string: { , line number: 3, token id: 102
+Keyword token, string: if , line number: 4, token id: 61
+Delimiter token, string: ( , line number: 4, token id: 104
+Identifier token, string: n , line number: 4, token id: 1001
+Operator token, string: <= , line number: 4, token id: 88
+Integer literal token, string: 1 , line number: 4, token id: 1002
+Delimiter token, string: ) , line number: 4, token id: 105
+Keyword token, string: return , line number: 5, token id: 52
+Integer literal token, string: 1 , line number: 5, token id: 1002
+Delimiter token, string: ; , line number: 5, token id: 108
+Keyword token, string: else , line number: 6, token id: 62
+Keyword token, string: return , line number: 7, token id: 52
+Identifier token, string: n , line number: 7, token id: 1001
+Operator token, string: * , line number: 7, token id: 112
+Identifier token, string: fact , line number: 7, token id: 1000
+Delimiter token, string: ( , line number: 7, token id: 104
+Identifier token, string: n , line number: 7, token id: 1001
+Operator token, string: - , line number: 7, token id: 114
+Integer literal token, string: 1 , line number: 7, token id: 1002
+Delimiter token, string: ) , line number: 7, token id: 105
+Delimiter token, string: ; , line number: 7, token id: 108
+Delimiter token, string: } , line number: 8, token id: 103
+Keyword token, string: void , line number: 9, token id: 53
+Keyword token, string: main , line number: 9, token id: 55
+Delimiter token, string: ( , line number: 9, token id: 104
+Keyword token, string: void , line number: 9, token id: 53
+Delimiter token, string: ) , line number: 9, token id: 105
+Delimiter token, string: { , line number: 9, token id: 102
+Keyword token, string: int , line number: 10, token id: 54
+Identifier token, string: x , line number: 10, token id: 1003
+Delimiter token, string: ; , line number: 10, token id: 108
+Identifier token, string: x , line number: 11, token id: 1003
+Operator token, string: = , line number: 11, token id: 116
+Integer literal token, string: 1 , line number: 11, token id: 1002
+Delimiter token, string: ; , line number: 11, token id: 108
+Keyword token, string: cout , line number: 12, token id: 50
+Operator token, string: << , line number: 12, token id: 86
+String literal token, string: "The value of x is : " , line number: 12, token id: 1004
+Operator token, string: << , line number: 12, token id: 86
+Identifier token, string: x , line number: 12, token id: 1003
+Delimiter token, string: ; , line number: 12, token id: 108
+Keyword token, string: while , line number: 13, token id: 59
+Delimiter token, string: ( , line number: 13, token id: 104
+Identifier token, string: x , line number: 13, token id: 1003
+Operator token, string: <= , line number: 13, token id: 88
+Integer literal token, string: 10 , line number: 13, token id: 1005
+Delimiter token, string: ) , line number: 13, token id: 105
+Delimiter token, string: { , line number: 13, token id: 102
+Identifier token, string: write , line number: 14, token id: 1006
+Delimiter token, string: ( , line number: 14, token id: 104
+Identifier token, string: x , line number: 14, token id: 1003
+Delimiter token, string: ) , line number: 14, token id: 105
+Delimiter token, string: ; , line number: 14, token id: 108
+Identifier token, string: write , line number: 15, token id: 1006
+Delimiter token, string: ( , line number: 15, token id: 104
+Identifier token, string: fact , line number: 15, token id: 1000
+Delimiter token, string: ( , line number: 15, token id: 104
+Identifier token, string: x , line number: 15, token id: 1003
+Delimiter token, string: ) , line number: 15, token id: 105
+Delimiter token, string: ) , line number: 15, token id: 105
+Delimiter token, string: ; , line number: 15, token id: 108
+Identifier token, string: writeln , line number: 16, token id: 1007
+Delimiter token, string: ( , line number: 16, token id: 104
+Delimiter token, string: ) , line number: 16, token id: 105
+Delimiter token, string: ; , line number: 16, token id: 108
+Identifier token, string: x , line number: 17, token id: 1003
+Operator token, string: = , line number: 17, token id: 116
+Identifier token, string: x , line number: 17, token id: 1003
+Operator token, string: + , line number: 17, token id: 113
+Integer literal token, string: 1 , line number: 17, token id: 1002
+Delimiter token, string: ; , line number: 17, token id: 108
+Delimiter token, string: } , line number: 18, token id: 103
+Delimiter token, string: } , line number: 19, token id: 103
