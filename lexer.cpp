@@ -13,7 +13,7 @@ using namespace std;
 //ofstream output_file;
 
 
-map<string,int> token_id;
+map<string,int> token_id,pti;
 ll ctr=1000;
 vector<char> spchar = {'!','%','^','&','*','(',')','-','+','+','{','[','}',']',':',';','/',',','<','>','='};
 vector<string> binop = {"<<",">>","<=",">=","==","+=","-=","*=","/=","!=","&&","||",":=","++","--","//"};
@@ -24,10 +24,9 @@ vector<string> keywords = {"cout","cin","return","void","int","main", "float", "
 bool isKeyword(string word){
     if(find(keywords.begin(), keywords.end(), word) != keywords.end())
     {
-        if(token_id.find(word)==token_id.end())
+        if(pti.find(word)==pti.end())
         {
-            token_id[word]=ctr;
-            ctr++;
+            pti[word]=token_id[word];
         }
         return true;
     }
@@ -38,10 +37,9 @@ bool isKeyword(string word){
 bool isOperator(string word){
     if(find(oprator.begin(), oprator.end(), word) != oprator.end())
     {
-        if(token_id.find(word)==token_id.end())
+        if(pti.find(word)==pti.end())
         {
-            token_id[word]=ctr;
-            ctr++;
+            pti[word]=token_id[word];
         }
         return true;
     }
@@ -52,10 +50,9 @@ bool isOperator(string word){
 bool isDelimiter(string word){
     if(find(delimiter.begin(), delimiter.end(), word) != delimiter.end())
     {
-        if(token_id.find(word)==token_id.end())
+        if(pti.find(word)==pti.end())
         {
-            token_id[word]=ctr;
-            ctr++;
+            pti[word]=token_id[word];
         }
         return true;
     }
@@ -69,6 +66,7 @@ bool isString(string word){
         if(token_id.find(word)==token_id.end())
         {
             token_id[word]=ctr;
+            pti[word]=token_id[word];
             ctr++;
         }
         return true;
@@ -90,6 +88,7 @@ bool isInteger(string word){
     if(token_id.find(word)==token_id.end())
     {
         token_id[word]=ctr;
+        pti[word]=ctr;
         ctr++;
     }
     return true;
@@ -122,6 +121,7 @@ bool isFloat(string word){
         if(token_id.find(word)==token_id.end())
         {
             token_id[word]=ctr;
+            pti[word]=ctr;
             ctr++;
         }
         return true;
@@ -145,6 +145,7 @@ bool isIdentifier(string word){
         if(token_id.find(word)==token_id.end())
         {
             token_id[word]=ctr;
+            pti[word]=token_id[word];
             ctr++;
         }
         return true;
@@ -301,49 +302,49 @@ void generate_symbol_table(vector<string> inputcode)
     }
     int i;
     symbolTable<<"Keywords:\n";
-    for(auto x : token_id)
+    for(auto x : pti)
     {
         if(isKeyword(x.first))
         symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Identifiers:\n";
-    for(auto x : token_id)
+    for(auto x : pti)
     {
         if(isIdentifier(x.first))
         symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Operators:\n";
-    for(auto x : token_id)
+    for(auto x : pti)
     {
         if(isOperator(x.first))
         symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Integer literals:\n";
-    for(auto x : token_id)
+    for(auto x : pti)
     {
         if(isInteger(x.first))
         symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Float literals:\n";
-    for(auto x : token_id)
+    for(auto x : pti)
     {
         if(isFloat(x.first))
         symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"Delimiters:\n";
-    for(auto x : token_id)
+    for(auto x : pti)
     {
         if(isDelimiter(x.first))
         symbolTable<<x.first<<" : "<<x.second<<"\n";
     }
     symbolTable<<"\n";
     symbolTable<<"String literals:\n";
-    for(auto x : token_id)
+    for(auto x : pti)
     {
         if(isString(x.first))
         symbolTable<<x.first<<" : "<<x.second<<"\n";

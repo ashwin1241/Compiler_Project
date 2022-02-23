@@ -1,19 +1,10 @@
 Keywords:
-boolean : 57
-break : 66
-cin : 51
-continue : 65
 cout : 50
 else : 62
-false : 64
-float : 56
 if : 61
 int : 54
 main : 55
 return : 52
-string : 58
-true : 63
-until : 60
 void : 53
 while : 59
 
@@ -26,27 +17,13 @@ x : 1003
 
 Operators:
 * : 112
-*= : 93
 + : 113
-++ : 99
-+= : 91
 - : 114
--- : 100
--= : 92
-/ : 115
-/= : 94
-< : 110
 << : 86
 <= : 88
 = : 116
-== : 90
-> : 111
->= : 89
->> : 87
 
 Integer literals:
- : 68
-0 : 1008
 1 : 1002
 10 : 1005
 
@@ -55,10 +32,7 @@ Float literals:
 Delimiters:
 ( : 104
 ) : 105
-, : 109
 ; : 108
-[ : 106
-] : 107
 { : 102
 } : 103
 
