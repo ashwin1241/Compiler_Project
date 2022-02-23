@@ -23,9 +23,11 @@ Delimiter token, string: ; , line number: 2, token id: 108
 Keyword token, string: string , line number: 3, token id: 58
 Identifier token, string: s , line number: 3, token id: 1012
 Operator token, string: = , line number: 3, token id: 116
-Invalid token, string: "Hello ney york 55%%  " ;  at line number: 3
+String literal token, string: "Hello ney york 55%%  " , line number: 3, token id: 1013
 Delimiter token, string: ; , line number: 3, token id: 108
 Keyword token, string: cout , line number: 4, token id: 50
 Operator token, string: << , line number: 4, token id: 86
-Invalid token, string: "This is the second @string    " ;  at line number: 4
+String literal token, string: "This is the second @string    " , line number: 4, token id: 1014
+Operator token, string: << , line number: 4, token id: 86
+Identifier token, string: z , line number: 4, token id: 1007
 Delimiter token, string: ; , line number: 4, token id: 108

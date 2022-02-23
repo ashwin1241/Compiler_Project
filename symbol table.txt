@@ -68,4 +68,6 @@ Delimiters:
 } : 103
 
 String literals:
+"Hello ney york 55%%  " : 1013
+"This is the second @string    " : 1014
 

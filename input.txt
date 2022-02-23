@@ -1,4 +1,4 @@
 float x = 0000.5,m=000.400050;
 int z = 000000004,t=0,q=500;
 string s = "Hello ney york 55%%  ";
-cout<<"This is the second @string    ";
+cout<<"This is the second @string    "<<z;  

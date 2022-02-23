@@ -191,6 +191,7 @@ void tokenize(string inputCode,int i,ofstream& output_file){
         output_file<<"String literal token, string: "<<inputCode<<" , line number: "<<i+1<<", token id: "<<token_id[inputCode]<<"\n";
         else
         output_file<<"Invalid token, string: "<<inputCode<<" at line number: "<<i+1<<"\n";
+        //cout<<inputCode<<"\n";
         return;
     }
 
@@ -230,7 +231,7 @@ void tokenize(string inputCode,int i,ofstream& output_file){
             output_file<<"Invalid token, string: "<<word<<" at line number: "<<i+1<<"\n";
 
         }
-    cout<<inputCode<<"\n";
+    //cout<<inputCode<<"\n";
 
 }
 
@@ -417,7 +418,7 @@ int main(){
 
     for(int i=0;i<inputCode.size();i++){
         int p=-1,q=-2;
-        p = inputCode[i].find("\"");
+        p = inputCode[i].find('"');
         if(p==-1){
             tokenize(inputCode[i],i,cc);
             
@@ -425,22 +426,22 @@ int main(){
             continue;
         }
         reverse(inputCode[i].begin(), inputCode[i].end());
-        q = (inputCode[i].size()-1)-(inputCode[i].find("\""));
+        q = (inputCode[i].size()-1)-(inputCode[i].find('"'));
         reverse(inputCode[i].begin(), inputCode[i].end());
         if(p==q && p>0){
             string sub1 = inputCode[i].substr(0,p);
-            string sub2 = inputCode[i].substr(p);
-            if(p>1)
+            string sub2 = inputCode[i].substr(p,inputCode[i].size());
+            if(p>=1)
             tokenize(sub1,i,cc);
             
             tokenize(sub2,i,cc);
             
         }
-        else if(p!=q && p!=-1){
+        else if(p!=q && q!=inputCode[i].size()){
             string sub1 = inputCode[i].substr(0,p);
-            string sub2 = inputCode[i].substr(p,q+1);
+            string sub2 = inputCode[i].substr(p,q-p+1);
             string sub3 = inputCode[i].substr(q+1);
-            //cout<<sub2<<endl;
+            //cout<<sub3<<"\n";
             /*for(int j=sub2.size()-1;j>=0;j--){
                 if(sub2[j]=='"')
                 break;
