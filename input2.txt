@@ -1,0 +1,13 @@
+void add(float a, float b)
+{
+    a+=b;
+    cout<<a+b<<"\n";
+}
+int main()
+{
+    float a,b;
+    a=0003.5000;
+    b=17.40050000;
+    add(a,b);
+    return 0;
+}

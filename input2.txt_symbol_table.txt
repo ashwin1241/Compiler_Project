@@ -1,0 +1,41 @@
+Keywords:
+cout : 51
+float : 57
+int : 55
+main : 56
+return : 53
+void : 54
+
+Identifiers:
+a : 1001
+add : 1000
+b : 1002
+
+Operators:
++ : 114
++= : 92
+<< : 87
+= : 116
+
+Integer literals:
+0 : 1010
+17 : 1007
+3 : 1004
+40050000 : 1008
+5000 : 1005
+
+Float literals:
+17.4005 : 1009
+3.5 : 1006
+
+Delimiters:
+( : 105
+) : 106
+, : 110
+; : 109
+{ : 103
+} : 104
+
+String literals:
+"\n" : 1003
+

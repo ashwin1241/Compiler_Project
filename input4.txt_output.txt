@@ -1,0 +1,12 @@
+Keyword token, string: int , line number: 1, token id: 55
+Keyword token, string: main , line number: 1, token id: 56
+Delimiter token, string: ( , line number: 1, token id: 105
+Delimiter token, string: ) , line number: 1, token id: 106
+Delimiter token, string: { , line number: 2, token id: 103
+Keyword token, string: cout , line number: 5, token id: 51
+Operator token, string: << , line number: 5, token id: 87
+*** Invalid token, string: "Invalid string; , at line number: 5 ***
+Keyword token, string: return , line number: 7, token id: 53
+Integer literal token, string: 0 , line number: 7, token id: 1000
+Delimiter token, string: ; , line number: 7, token id: 109
+Delimiter token, string: } , line number: 8, token id: 104

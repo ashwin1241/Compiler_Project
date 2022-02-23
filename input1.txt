@@ -1,15 +1,15 @@
-//A program to compute factorials
+// A program to compute factorials  
  
 int fact( int n) { 
 if (n <= 1) 
 return 1; 
 else 
-return n*fact(n-1); //checking test comment
+return n*fact(n-1); // checking line end comments
 } 
 void main(void) { 
 int x; 
 x = 1; 
-cout<<"The value of x is : "<<x;
+cout<<"Test string "<<x<<"\n";
 while (x <= 10) { 
 write(x); 
 write(fact(x)); 

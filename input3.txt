@@ -1,0 +1,7 @@
+int main()
+{
+    cout<<"Hello World!!";
+    cout<<"Line 2 of string !@#$%^&*()";
+    cout<<"  Line 3    "<<"continuation of string"<<" "<<"part 3 of continuation";
+    return 0;
+}

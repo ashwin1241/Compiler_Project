@@ -7,11 +7,6 @@
 typedef long long int ll;
 
 using namespace std;
-//using std::cout; using std::cerr;
-//using std::endl; using std::string;
-//using std::ifstream; using std::vector;
-//ofstream output_file;
-
 
 map<string,int> token_id,pti;
 ll ctr=1000;
@@ -19,7 +14,7 @@ vector<char> spchar = {'!','%','^','&','*','(',')','-','+','+','{','[','}',']','
 vector<string> binop = {"<<",">>","<=",">=","==","+=","-=","*=","/=","!=","&&","||",":=","++","--","//"};
 vector<string> delimiter = {"{", "}", "(", ")", "[", "]", ";", ","};
 vector<string> oprator = {"<<",">>","<", ">", "<=", ">=", "*", "+", "-", "/", "=", "-=", "*=", "+=", "/=", "++", "--", "=="};
-vector<string> keywords = {"cout","cin","return","void","int","main", "float", "boolean", "string", "while", "until", "if" ,"else", "true", "false", "continue", "break"};
+vector<string> keywords = {"char","cout","cin","return","void","int","main", "float", "boolean", "string", "while", "until", "if" ,"else", "true", "false", "continue", "break","double"};
 
 bool isKeyword(string word){
     if(find(keywords.begin(), keywords.end(), word) != keywords.end())
@@ -84,7 +79,6 @@ bool isInteger(string word){
     word= regex_replace(word, regex("^0+"), "");
     if(word.size()==0)
     word+="0";
-    //cout<<"Yess "<<word<<endl;
     if(token_id.find(word)==token_id.end())
     {
         token_id[word]=ctr;
@@ -132,7 +126,7 @@ bool isFloat(string word){
 
 bool isIdentifier(string word){
     char x = word[0];
-    if(!isKeyword(word)&&(x>='a'&&x<='z')||(x>='A'&&x<='Z'))
+    if(!isKeyword(word)&&((x>='a'&&x<='z')||(x>='A'&&x<='Z')||(x=='_')))
     {
         int i;
         for(i=1;i<word.size();i++)
@@ -154,45 +148,15 @@ bool isIdentifier(string word){
     return false;
 }
 
-// void tokenize_string(string inputCode,int i,ofstream& output_file){
-    
-//     //ofstream output_file;
-//     //output_file.open("outputstring.txt");
-   
-//     if(!output_file.is_open())
-//     {
-//         cerr << "Could not open the file here- 'output.txt'\n";
-//         return;
-//     }
-
-//     if(inputCode[0]=='"'){
-//         if(isString(inputCode))
-//         output_file<<"String literal token, string: "<<inputCode<<" , line number: "<<i+1<<", token id: XXX"<<"\n";
-//         else
-//         output_file<<"Invalid token, string: "<<inputCode<<" at line number: "<<i+1<<"\n";
-//         output_file.close();
-//         return;
-//     }
-// }
-
 void tokenize(string inputCode,int i,ofstream& output_file){
+    
     bool isComment=false;
-
-    //ofstream output_file;
-    //output_file.open("output.txt");
-  
-    /*if(!output_file.is_open())
-    {
-        cerr << "Could not open the file - 'output.txt'\n";
-        return;
-    }*/
 
     if(inputCode[0]=='"'){
         if(isString(inputCode))
         output_file<<"String literal token, string: "<<inputCode<<" , line number: "<<i+1<<", token id: "<<token_id[inputCode]<<"\n";
         else
-        output_file<<"Invalid token, string: "<<inputCode<<" , at line number: "<<i+1<<"\n";
-        //cout<<inputCode<<"\n";
+        output_file<<"*** Invalid token, string: "<<inputCode<<" , at line number: "<<i+1<<" ***\n";
         return;
     }
 
@@ -200,9 +164,6 @@ void tokenize(string inputCode,int i,ofstream& output_file){
         string word;
         while (ss >> word) 
         {
-            //cout << word << "\n";
-            //word=preProcess(word);
-
             if(word=="//")
             {
                 isComment=true;
@@ -235,7 +196,7 @@ void tokenize(string inputCode,int i,ofstream& output_file){
             else if(isIdentifier(word))
             output_file<<"Identifier token, string: "<<word<<" , line number: "<<i+1<<", token id: "<<token_id[word]<<"\n";
             else
-            output_file<<"Invalid token, string: "<<word<<" at line number: "<<i+1<<"\n";
+            output_file<<"*** Invalid token, string: "<<word<<" , at line number: "<<i+1<<" ***\n";
 
         }
 
@@ -244,33 +205,25 @@ void tokenize(string inputCode,int i,ofstream& output_file){
             isComment=false;
             return;
         }
-    //cout<<inputCode<<"\n";
-
 }
 
 string preProcess(string line){
-
-    // if(line[0]=='/' && line[1]=='/'){
-    //        //cout<<"Token isComment"<<", line number "<<i+1<<endl;
-    //        return line; 
-    //     }
 
     string newLine="";
     for(int i=0;i<line.size();i++) 
     {
     
     	if(line[i]=='"'){
-            newLine+=line[i];
-            int j=i+1;
-            while(line[j]!='"' && j<line.size()){
-                newLine+=line[j];
-                j++;
+            newLine+=line[i++];
+            while(line[i]!='"' && i<line.size()){
+                newLine+=line[i];
+                i++;
             }
-            if(j<line.size() && line[j]=='"')
-            {newLine+='"';j++;}
-            if(j>=line.size())
+            if(i<line.size() && line[i]=='"')
+            {newLine+='"';}
+            if(i>=line.size())
             return newLine;
-            i=j;
+            continue;
         }
     	
         string bop="";
@@ -288,13 +241,12 @@ string preProcess(string line){
         else 
         newLine=newLine+line[i];
     }
-    //cout<<newLine<<"\n";
     return newLine;
 }
 
-void generate_symbol_table(vector<string> inputcode)
+void generate_symbol_table(vector<string> inputcode,string filename)
 {
-    ofstream symbolTable("symbol table.txt");
+    ofstream symbolTable(filename+"_symbol_table.txt");
     if(!symbolTable.is_open())
     {
         cerr<<"Coud not generate symbol table\n";
@@ -401,11 +353,13 @@ void initialize_token_map()
 
 int main(){
 
-    //initialize token map
+    //Initialize token map
     initialize_token_map();
 
     //Name of input code file	
-    string filename("input.txt");
+    string filename;
+    cout<<"Enter the name of input file :\n";
+    cin>>filename;
     vector<string> inputCode;
     string line;
 
@@ -425,60 +379,53 @@ int main(){
     }
 
     //Tokenize
-    //tokenize(inputCode);
     ofstream cc;
-    cc.open("output.txt");
+    cc.open(filename+"_output.txt");
 
     for(int i=0;i<inputCode.size();i++){
         int p=-1,q=-2;
         p = inputCode[i].find('"');
         if(p==-1){
             tokenize(inputCode[i],i,cc);
-            
-            //cout<<inputCode[i]<<endl;
             continue;
         }
-        reverse(inputCode[i].begin(), inputCode[i].end());
-        q = (inputCode[i].size()-1)-(inputCode[i].find('"'));
-        reverse(inputCode[i].begin(), inputCode[i].end());
-        if(p==q && p>0){
-            string sub1 = inputCode[i].substr(0,p);
-            string sub2 = inputCode[i].substr(p,inputCode[i].size());
-            if(p>=1)
-            tokenize(sub1,i,cc);
-            
-            tokenize(sub2,i,cc);
-            
-        }
-        else if(p!=q && q!=inputCode[i].size()){
-            string sub1 = inputCode[i].substr(0,p);
-            string sub2 = inputCode[i].substr(p,q-p+1);
-            string sub3 = inputCode[i].substr(q+1);
-            //cout<<sub3<<"\n";
-            /*for(int j=sub2.size()-1;j>=0;j--){
-                if(sub2[j]=='"')
-                break;
-                //cout<<sub2[j]<<endl;
-                sub2[j]=' ';
+        int j=0;
+        bool isStr=false;
+        while(j<inputCode[i].size())
+        {
+            string s="";
+            for(;j<inputCode[i].size();j++)
+            {
+                if(inputCode[i][j]!='"')
+                s+=inputCode[i][j];
+                else
+                {
+                    j++;
+                    break;
+                }
             }
-            reverse(sub2.begin(),sub2.end());
-            sub2=regex_replace(sub2, regex("^ +"), "");
-            reverse(sub2.begin(),sub2.end());*/
-            //cout<<sub2<<endl;
-            if(p>0)
-            tokenize(sub1,i,cc);
-            
-            tokenize(sub2,i,cc);
-            if(q<inputCode[i].size()-1)
-            tokenize(sub3,i,cc);
-        }
-        
+            if(isStr)
+            {
+                s='"'+s;
+                if(j<inputCode[i].size())
+                s+='"';
+                isStr=false;
+                tokenize(s,i,cc);
+                continue;
+            }
+            if(!isStr)
+            {
+                isStr=true;
+                tokenize(s,i,cc);
+                continue;
+            }
+        }        
     }
 
     cout<<"Output file generated successfully\n";
 
     //Generate symbol table
-    generate_symbol_table(inputCode);
+    generate_symbol_table(inputCode,filename);
 
     
 	//Closing the input code file

@@ -1,0 +1,8 @@
+int main()
+{
+    //following are some invalid identifier names:
+
+    int asp#def;
+    char 12dfi;
+    float #abcd;
+}

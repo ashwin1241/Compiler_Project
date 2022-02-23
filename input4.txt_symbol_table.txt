@@ -1,0 +1,25 @@
+Keywords:
+cout : 51
+int : 55
+main : 56
+return : 53
+
+Identifiers:
+
+Operators:
+<< : 87
+
+Integer literals:
+0 : 1000
+
+Float literals:
+
+Delimiters:
+( : 105
+) : 106
+; : 109
+{ : 103
+} : 104
+
+String literals:
+

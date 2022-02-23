@@ -1,0 +1,42 @@
+Keywords:
+cout : 51
+else : 63
+if : 62
+int : 55
+main : 56
+return : 53
+void : 54
+while : 60
+
+Identifiers:
+fact : 1000
+n : 1001
+write : 1007
+writeln : 1008
+x : 1003
+
+Operators:
+* : 113
++ : 114
+- : 115
+<< : 87
+<= : 89
+= : 116
+
+Integer literals:
+1 : 1002
+10 : 1006
+
+Float literals:
+
+Delimiters:
+( : 105
+) : 106
+; : 109
+{ : 103
+} : 104
+
+String literals:
+"Test string " : 1004
+"\n" : 1005
+

@@ -1,0 +1,31 @@
+Keywords:
+cout : 51
+int : 55
+main : 56
+return : 53
+
+Identifiers:
+
+Operators:
+<< : 87
+
+Integer literals:
+0 : 1006
+
+Float literals:
+
+Delimiters:
+( : 105
+) : 106
+; : 109
+{ : 103
+} : 104
+
+String literals:
+"  Line 3    " : 1002
+" " : 1004
+"Hello World!!" : 1000
+"Line 2 of string !@#$%^&*()" : 1001
+"continuation of string" : 1003
+"part 3 of continuation" : 1005
+

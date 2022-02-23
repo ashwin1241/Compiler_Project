@@ -1,0 +1,52 @@
+Keyword token, string: void , line number: 1, token id: 54
+Identifier token, string: add , line number: 1, token id: 1000
+Delimiter token, string: ( , line number: 1, token id: 105
+Keyword token, string: float , line number: 1, token id: 57
+Identifier token, string: a , line number: 1, token id: 1001
+Delimiter token, string: , , line number: 1, token id: 110
+Keyword token, string: float , line number: 1, token id: 57
+Identifier token, string: b , line number: 1, token id: 1002
+Delimiter token, string: ) , line number: 1, token id: 106
+Delimiter token, string: { , line number: 2, token id: 103
+Identifier token, string: a , line number: 3, token id: 1001
+Operator token, string: += , line number: 3, token id: 92
+Identifier token, string: b , line number: 3, token id: 1002
+Delimiter token, string: ; , line number: 3, token id: 109
+Keyword token, string: cout , line number: 4, token id: 51
+Operator token, string: << , line number: 4, token id: 87
+Identifier token, string: a , line number: 4, token id: 1001
+Operator token, string: + , line number: 4, token id: 114
+Identifier token, string: b , line number: 4, token id: 1002
+Operator token, string: << , line number: 4, token id: 87
+String literal token, string: "\n" , line number: 4, token id: 1003
+Delimiter token, string: ; , line number: 4, token id: 109
+Delimiter token, string: } , line number: 5, token id: 104
+Keyword token, string: int , line number: 6, token id: 55
+Keyword token, string: main , line number: 6, token id: 56
+Delimiter token, string: ( , line number: 6, token id: 105
+Delimiter token, string: ) , line number: 6, token id: 106
+Delimiter token, string: { , line number: 7, token id: 103
+Keyword token, string: float , line number: 8, token id: 57
+Identifier token, string: a , line number: 8, token id: 1001
+Delimiter token, string: , , line number: 8, token id: 110
+Identifier token, string: b , line number: 8, token id: 1002
+Delimiter token, string: ; , line number: 8, token id: 109
+Identifier token, string: a , line number: 9, token id: 1001
+Operator token, string: = , line number: 9, token id: 116
+Floating point literal token, string: 3.5 , line number: 9, token id: 1006
+Delimiter token, string: ; , line number: 9, token id: 109
+Identifier token, string: b , line number: 10, token id: 1002
+Operator token, string: = , line number: 10, token id: 116
+Floating point literal token, string: 17.4005 , line number: 10, token id: 1009
+Delimiter token, string: ; , line number: 10, token id: 109
+Identifier token, string: add , line number: 11, token id: 1000
+Delimiter token, string: ( , line number: 11, token id: 105
+Identifier token, string: a , line number: 11, token id: 1001
+Delimiter token, string: , , line number: 11, token id: 110
+Identifier token, string: b , line number: 11, token id: 1002
+Delimiter token, string: ) , line number: 11, token id: 106
+Delimiter token, string: ; , line number: 11, token id: 109
+Keyword token, string: return , line number: 12, token id: 53
+Integer literal token, string: 0 , line number: 12, token id: 1010
+Delimiter token, string: ; , line number: 12, token id: 109
+Delimiter token, string: } , line number: 13, token id: 104

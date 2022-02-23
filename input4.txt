@@ -1,0 +1,8 @@
+int main()
+{
+    //following are some invalid strings:
+    
+    cout<<"Invalid string;
+    
+    return 0;
+}

@@ -1,0 +1,27 @@
+Keyword token, string: int , line number: 1, token id: 55
+Keyword token, string: main , line number: 1, token id: 56
+Delimiter token, string: ( , line number: 1, token id: 105
+Delimiter token, string: ) , line number: 1, token id: 106
+Delimiter token, string: { , line number: 2, token id: 103
+Keyword token, string: cout , line number: 3, token id: 51
+Operator token, string: << , line number: 3, token id: 87
+String literal token, string: "Hello World!!" , line number: 3, token id: 1000
+Delimiter token, string: ; , line number: 3, token id: 109
+Keyword token, string: cout , line number: 4, token id: 51
+Operator token, string: << , line number: 4, token id: 87
+String literal token, string: "Line 2 of string !@#$%^&*()" , line number: 4, token id: 1001
+Delimiter token, string: ; , line number: 4, token id: 109
+Keyword token, string: cout , line number: 5, token id: 51
+Operator token, string: << , line number: 5, token id: 87
+String literal token, string: "  Line 3    " , line number: 5, token id: 1002
+Operator token, string: << , line number: 5, token id: 87
+String literal token, string: "continuation of string" , line number: 5, token id: 1003
+Operator token, string: << , line number: 5, token id: 87
+String literal token, string: " " , line number: 5, token id: 1004
+Operator token, string: << , line number: 5, token id: 87
+String literal token, string: "part 3 of continuation" , line number: 5, token id: 1005
+Delimiter token, string: ; , line number: 5, token id: 109
+Keyword token, string: return , line number: 6, token id: 53
+Integer literal token, string: 0 , line number: 6, token id: 1006
+Delimiter token, string: ; , line number: 6, token id: 109
+Delimiter token, string: } , line number: 7, token id: 104
