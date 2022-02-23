@@ -12,7 +12,4 @@ Delimiter token, string: ; , line number: 6, token id: 109
 Keyword token, string: float , line number: 7, token id: 57
 *** Invalid token, string: #abcd , at line number: 7 ***
 Delimiter token, string: ; , line number: 7, token id: 109
-Keyword token, string: double , line number: 8, token id: 68
-Identifier token, string: __abcd , line number: 8, token id: 1000
-Delimiter token, string: ; , line number: 8, token id: 109
-Delimiter token, string: } , line number: 9, token id: 104
+Delimiter token, string: } , line number: 8, token id: 104

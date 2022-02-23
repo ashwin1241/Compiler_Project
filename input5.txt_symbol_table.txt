@@ -1,12 +1,10 @@
 Keywords:
 char : 50
-double : 68
 float : 57
 int : 55
 main : 56
 
 Identifiers:
-__abcd : 1000
 
 Operators:
 
