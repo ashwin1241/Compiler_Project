@@ -3,6 +3,7 @@ char : 50
 float : 57
 int : 55
 main : 56
+string : 59
 
 Identifiers:
 

@@ -5,4 +5,5 @@ int main()
     int asp#def;
     char 12dfi;
     float #abcd;
+    string "asp
 }

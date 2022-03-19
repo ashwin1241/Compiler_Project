@@ -12,4 +12,6 @@ Delimiter token, string: ; , line number: 6, token id: 109
 Keyword token, string: float , line number: 7, token id: 57
 *** Invalid token, string: #abcd , at line number: 7 ***
 Delimiter token, string: ; , line number: 7, token id: 109
-Delimiter token, string: } , line number: 8, token id: 104
+Keyword token, string: string , line number: 8, token id: 59
+*** Invalid token, string: "asp , at line number: 8 ***
+Delimiter token, string: } , line number: 9, token id: 104
