@@ -106,6 +106,8 @@ bool isFloat(string word){
     word= regex_replace(word, regex("^0+"), "");
     reverse(word.begin(), word.end());
     word= regex_replace(word, regex("^0+"), "");
+    if(word[0]=='.')
+    word="0"+word;
     reverse(word.begin(), word.end());
     if(word[0]=='.')
     word="0"+word;
@@ -188,6 +190,8 @@ void tokenize(string inputCode,int i,ofstream& output_file){
                 word= regex_replace(word, regex("^0+"), "");
                 reverse(word.begin(), word.end());
                 word= regex_replace(word, regex("^0+"), "");
+                if(word[0]=='.')
+                word="0"+word;
                 reverse(word.begin(), word.end());
                 if(word[0]=='.')
                 word="0"+word;
